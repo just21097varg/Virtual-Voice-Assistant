@@ -1,0 +1,164 @@
+<html>
+<head>
+<style>
+input {
+    border-style: solid;
+    border-color: black;
+    width:100px;
+    height:100px;
+    font-size:55px;
+    color:black;
+    background-color:green;
+}
+button {
+    
+    width:100px;
+    height:50px;
+    color:yellow;
+    background-color:blue;
+}
+</style>
+<script>
+var c=1,o=0,x=0;
+
+function change(id)
+{
+    if(c==1)
+    {
+      document.getElementById(id).value="X";
+      document.getElementById(id).disabled=true;
+      c=0;
+      xturn();getwin();
+    }
+    else
+    {
+       document.getElementById(id).value="O";
+       document.getElementById(id).disabled=true;
+       c=1;
+       oturn();getwin();
+    }
+}  
+
+function dis()
+{
+   document.getElementById("1").disabled=true;
+   document.getElementById("2").disabled=true;
+   document.getElementById("3").disabled=true;
+   document.getElementById("4").disabled=true;
+   document.getElementById("5").disabled=true;
+   document.getElementById("6").disabled=true;
+   document.getElementById("7").disabled=true;
+   document.getElementById("8").disabled=true;
+   document.getElementById("9").disabled=true;
+
+
+}
+function en()
+{
+   document.getElementById("1").disabled=false;
+   document.getElementById("2").disabled=false;
+   document.getElementById("3").disabled=false;
+   document.getElementById("4").disabled=false;
+   document.getElementById("5").disabled=false;
+   document.getElementById("6").disabled=false;
+   document.getElementById("7").disabled=false;
+   document.getElementById("8").disabled=false;
+   document.getElementById("9").disabled=false;
+}
+function oturn()
+{
+    var html='';
+    html+='<h3>X='+x+'  O='+o+'  <button value="RESET" onclick="resetsc()">RESET SCORE</button><br>X turn</h3><br>';
+    document.getElementById("tt").innerHTML=html; 
+}
+function xturn()
+{
+    var html='';
+    html+='<h3>X='+x+'  O='+o+'  <button value="RESET" onclick="resetsc()">RESET SCORE</button><br>O turn</h3><br>';
+    document.getElementById("tt").innerHTML=html; 
+}
+function xwin()
+{
+    var html='';
+    x++; 
+    html+='<h3>X='+x+'  O='+o+'  <button value="RESET" onclick="resetsc()">RESET SCORE</button><br>X wins!!</h3><br>';
+    document.getElementById("tt").innerHTML=html;
+    
+    dis();
+}
+function owin()
+{
+    var html='';
+    o++;
+    html+='<h3>X='+x+'  O='+o+'  <button value="RESET" onclick="resetsc()">RESET SCORE</button><br>O wins!!</h3><br>';
+    document.getElementById("tt").innerHTML=html; 
+    
+    dis();
+}
+function draw()
+{
+    var html='';
+    html+='<h3>X='+x+'  O='+o+'<br>Draw!!</h3><br>';
+    document.getElementById("tt").innerHTML=html; 
+    dis();
+}
+function resetsc()
+{
+   x=0;
+   o=0;
+   reset();
+}   
+function reset()
+{
+   en();
+   document.getElementById("1").value=" ";
+   document.getElementById("2").value=" ";
+   document.getElementById("3").value=" ";
+   document.getElementById("4").value=" ";
+   document.getElementById("5").value=" ";
+   document.getElementById("6").value=" ";
+   document.getElementById("7").value=" ";
+   document.getElementById("8").value=" ";
+   document.getElementById("9").value=" ";
+   c=1;
+   oturn();
+}
+function getwin()
+{
+   var v1=document.getElementById("1").value;
+   var v2=document.getElementById("2").value;
+   var v3=document.getElementById("3").value;
+   var v4=document.getElementById("4").value;
+   var v5=document.getElementById("5").value;
+   var v6=document.getElementById("6").value;
+   var v7=document.getElementById("7").value;
+   var v8=document.getElementById("8").value;
+   var v9=document.getElementById("9").value;
+   if((v1==v2 && v2==v3 && v1=="O") || (v4==v5 && v5==v6 && v4=="O") || (v7==v8 && v8==v9 && v9=="O") || (v1==v4 && v4==v7 && v1=="O") ||(v5==v2 && v2==v8 && v2=="O") || (v3==v6 && v6==v9 && v9=="O") || (v1==v5 && v5==v9 && v1=="O") || (v3==v5 && v5==v7 && v3=="O"))
+         owin();
+   else if((v1==v2 && v2==v3 && v1=="X") || (v4==v5 && v5==v6 && v4=="X") || (v7==v8 && v8==v9 && v9=="X") || (v1==v4 && v4==v7 && v1=="X") ||(v5==v2 && v2==v8 && v2=="X") || (v3==v6 && v6==v9 && v9=="X") || (v1==v5 && v5==v9 && v1=="X") || (v3==v5 && v5==v7 && v3=="X"))
+         xwin();
+   else if(v1!=" " && v2!=" " && v3!=" " && v4!=" " && v5!=" " && v6!=" " && v7!=" " && v8!=" " && v9!=" ")
+         draw();  
+}
+</script>
+</head>
+<body>
+   <h3>SCOREBOARD</h3>
+   <?php
+       echo "My first PHP script!";
+   ?>
+   <center><div id="tt"><h3>X=0  O=0  <button value="RESET" onclick="resetsc()">RESET SCORE</button><br>X turn</h3><br></div>
+
+   <input type="button" id="1" value=" " onclick="change(id)" >
+   <input type="button" id="2" value=" " onclick="change(id)">
+   <input type="button" id="3" value=" " onclick="change(id)"><br>
+   <input type="button" id="4" value=" " onclick="change(id)">
+   <input type="button" id="5" value=" " onclick="change(id)">
+   <input type="button" id="6" value=" " onclick="change(id)"><br>
+   <input type="button" id="7" value=" " onclick="change(id)">
+   <input type="button" id="8" value=" " onclick="change(id)">
+   <input type="button" id="9" value=" " onclick="change(id)"><br><br>
+   <button value="RESET" onclick="reset()">RESET</button></center>
+</body>
+</html>
