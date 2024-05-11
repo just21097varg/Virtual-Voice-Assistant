@@ -20,6 +20,7 @@ for i in s:
   print("{}. {}".format(c,i))
   c+=1
 c=0
+to_lang=""
 while(1):
  try:
   with sr.Microphone() as source2:
@@ -51,6 +52,7 @@ while(1):
     print("Phase to be Translated :"+ MyText) 
     text_to_translate = translator.translate(MyText,src= from_lang,dest= to_lang) 
     text = text_to_translate.text  
+    print("Phase to be Translated :"+ text) 
     speak = gTTS(text=text, lang=to_lang, slow= False)       
     speak.save("capture{}.mp3".format(c))
     c=c+1

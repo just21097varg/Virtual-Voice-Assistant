@@ -61,7 +61,7 @@ while(1):
                     os.system("py dictionary.py");
                   if(MyText=="game"):
                     SpeakText("Starting TicTacToe game")
-                    os.system("start file:///C:/Users/JUSTIN/Desktop/MyProject/tictactoe.html") 
+                    os.system("start file:///C:/Users/JUSTIN/Desktop/Projects/VirtualVoiceAssistant/tictactoe.html") 
                   if(MyText=="location"):
                     g = geocoder.ip('me')
                     geolocator = Nominatim(user_agent="my_application")
@@ -106,7 +106,7 @@ while(1):
                   if(MyText=="play music"):
                     SpeakText("opening music player")
                     os.system('cls') 
-                    os.system("py musicplayer.py")
+                    os.system("py music.py")
                   if(MyText=="capture image"):
                    SpeakText("opening camera ..... Please wait!!")
                    os.system("cls")
