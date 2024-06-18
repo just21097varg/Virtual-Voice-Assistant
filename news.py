@@ -10,6 +10,9 @@ file = get("https://news.google.com/topstories?hl=en-IN&gl=IN&ceid=IN:en")
 r=file.text
 soup = BeautifulSoup(r,'html.parser')
 t=soup.findAll('a',{'class':'DY5T1d'})
+print(t)
+for i in range(1,1000000000):
+  a=5
 s=0
 SpeakText("Today's Headlines")
 while(s!=len(t)):

@@ -1,7 +1,7 @@
 import re, requests, subprocess, urllib.parse, urllib.request
 from bs4 import BeautifulSoup
 import os
-import youtube_dl
+import yt_dlp as youtube_dl
 import urllib
 import shutil
 import moviepy.editor as mp 
@@ -44,7 +44,7 @@ while(1):
         #with youtube_dl.YoutubeDL(ydl_opts) as ydl:
         #  ydl.download(['{}'.format(clip2)])
         music_name=music_name.replace(" ","_")
-        os.system("youtube-dl --quiet --output songs/{}.mp4 {}".format(music_name,clip2))
+        os.system("yt-dlp --quiet --output songs/{}.mp4 {}".format(music_name,clip2))
         clip1 = mp.VideoFileClip(r"songs/{}.mp4".format(music_name),verbose=False) 
         clip1.audio.write_audiofile(r"audio/{}.mp3".format(music_name),verbose=False,logger=None)
         os.system("taskkill>NUL /F /IM ffmpeg-win64-v4.2.2.exe")
@@ -52,6 +52,6 @@ while(1):
         n="audio/{}.mp3".format(music_name)
         os.system("cls")
         os.system("echo Now Playing {}.......".format(music_name))
-        playsound(n)
+        playsound(n,False)
    except sr.UnknownValueError: 
       SpeakText("Sorry!! cannot recognize . Please try again") 
