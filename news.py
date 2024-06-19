@@ -6,16 +6,13 @@ def SpeakText(command):
     engine = pyttsx3.init() 
     engine.say(command)  
     engine.runAndWait() 
-file = get("https://news.google.com/topstories?hl=en-IN&gl=IN&ceid=IN:en") 
+file = get("https://news.google.com/showcase?hl=en-IN&gl=IN&ceid=IN%3Aen")
 r=file.text
 soup = BeautifulSoup(r,'html.parser')
-t=soup.findAll('a',{'class':'DY5T1d'})
-print(t)
-for i in range(1,1000000000):
-  a=5
+t=soup.findAll('a',{'class':'kEAYTc r5Cqre'})
 s=0
 SpeakText("Today's Headlines")
-while(s!=len(t)):
+while(s!=15):
   print((s+1),t[s].text)
   SpeakText(t[s])
   s=s+1
